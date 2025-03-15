@@ -1,5 +1,5 @@
 import { PostItem } from '@/types'
-import { uuid } from '@/utils'
+import { uuid } from '@/utils/common'
 import { neon } from '@neondatabase/serverless'
 import { NextRequest, NextResponse } from 'next/server'
 

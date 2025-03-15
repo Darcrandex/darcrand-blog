@@ -10,8 +10,12 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@neondatabase/serverless": "^0.10.4",
     "@tanstack/react-query": "^5.67.3",
+    "ahooks": "^3.8.4",
+    "antd": "^5.24.3",
+    "axios": "^1.8.3",
     "crypto-js": "^4.2.0",
     "lodash-es": "^4.17.21",
     "nanoid": "^5.1.3",

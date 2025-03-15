@@ -1,5 +1,5 @@
 import { UserItem } from '@/types'
-import { uuid } from '@/utils'
+import { uuid } from '@/utils/common'
 import { compareHash, hashData } from '@/utils/sha'
 import { neon } from '@neondatabase/serverless'
 import { NextRequest, NextResponse } from 'next/server'
@@ -36,11 +36,11 @@ export async function POST(req: NextRequest) {
 
   const body: Omit<UserItem, 'id'> = await req.json()
   const id = uuid(8)
-  await sql('INSERT INTO user (id, name, email, password) VALUES ($1, $2, $3, $4);', [
+  await sql('INSERT INTO admins (id, name, email, password) VALUES ($1, $2, $3, $4);', [
     id,
     body.name,
     body.email,
-    body.password,
+    hashData(body.password),
   ])
 
   return NextResponse.json({ message: 'Success', data: id })

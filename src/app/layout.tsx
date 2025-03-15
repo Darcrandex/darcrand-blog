@@ -1,4 +1,6 @@
 import QueryProvider from '@/providers/QueryProvider'
+import '@ant-design/v5-patch-for-react-19'
+import { ConfigProvider, theme } from 'antd'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
@@ -26,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>{children}</ConfigProvider>
+        </QueryProvider>
       </body>
     </html>
   )
