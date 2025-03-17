@@ -6,6 +6,7 @@
 
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 type PostDTO = {
@@ -41,7 +42,9 @@ export default function PostListPage() {
       <ol>
         {list.map((v) => (
           <li key={v.id}>
-            <h2>{v.title}</h2>
+            <h2>
+              <Link href={`/post/${v.id}`}>{v.title}</Link>
+            </h2>
             <button type='button' onClick={() => onRemove(v.id)}>
               delete
             </button>

@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
   const body: Omit<PostItem, 'id'> = await req.json()
   const id = uuid(8)
-  const res = await sql('INSERT INTO post (id, title, cover, content) VALUES ($1, $2, $3, $4);', [
+  await sql('INSERT INTO post (id, title, cover, content) VALUES ($1, $2, $3, $4);', [
     id,
     body.title,
     body.cover,
@@ -29,6 +29,6 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     message: 'Success',
-    data: res,
+    data: id,
   })
 }
