@@ -48,12 +48,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   const { id } = await params
 
   const body: UserItem = await req.json()
-  await sql('UPDATE admins SET name = $1, email = $2, password = $3 WHERE id = $4;', [
-    body.name,
-    body.email,
-    body.password,
-    id,
-  ])
+  await sql('UPDATE admins SET name = $1, email = $2 WHERE id = $3;', [body.name, body.email, id])
 
   return NextResponse.json({
     message: 'Success',
